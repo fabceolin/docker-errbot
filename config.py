@@ -42,7 +42,24 @@ import logging
 # 'IRC'      - for classic IRC or bridged services like https://gitter.im
 # 'XMPP'
 
-BACKEND = os.environ.get('BACKEND', 'XMPP')
+
+BOT_IDENTITY_TOKEN = os.environ.get('BOT_IDENTITY_TOKEN', '')
+BOT_SIGNING_SECRET = os.environ.get('BOT_SIGNING_SECRET', '')
+BOT_APP_TOKEN = os.environ.get('BOT_APP_TOKEN','')
+
+
+BOT_IDENTITY = {
+        'token': BOT_IDENTITY_TOKEN,
+        'signing_secret': BOT_SIGNING_SECRET,
+        'app_token': BOT_APP_TOKEN
+        }
+
+
+
+BOT_ADMINS = ( os.environ.get('BOT_ADMINS') )  # !! Don't leave that to "@CHANGE_ME" if you connect your errbot to a chat system !!
+
+
+BACKEND = os.environ.get('BACKEND', 'SlackV3')
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
@@ -90,7 +107,7 @@ BOT_LOG_FILE = '/srv/err.log'
 # If you encounter any issues with Err, please set your log level to
 # logging.DEBUG and attach a log with your bug report to aid the developers
 # in debugging the issue.
-BOT_LOG_LEVEL = logging.getLevelName(os.environ.get('BOT_LOG_LEVEL', 'INFO'))
+BOT_LOG_LEVEL = logging.getLevelName(os.environ.get('BOT_LOG_LEVEL', 'DEBUG'))
 
 # Enable logging to sentry (find out more about sentry at www.getsentry.com).
 # This is optional and disabled by default.
@@ -106,8 +123,6 @@ BOT_ASYNC = True
 ##########################################################################
 # Account and chatroom (MUC) configuration                               #
 ##########################################################################
-
-BOT_IDENTITY = {}
 
 # username
 if 'BOT_USERNAME' in os.environ:

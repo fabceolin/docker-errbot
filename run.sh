@@ -21,6 +21,6 @@ chown -R ${ERRUSER} /srv
 
 echo source /app/venv/bin/activate >/srv/.bash_profile
 
-( for i in $(printenv | grep -v root | grep -v -E '\s+'); do  key=$(echo $i | sed 's/=.*//g'); val=$(echo $i | sed 's/.*=\(.*\)/\1/g'); echo "export $key='$val'"; done )>>/srv/.bash_profile
+( for i in $(printenv | grep -v root | grep -v -E '\s+'); do  key=$(echo $i | sed 's/=.*//g'); val=$(echo $i | sed 's/.*=\(.*\)/\1/g'); echo "export ${key/:/}='$val'"; done )>>/srv/.bash_profile
 # copy default container image config file if not exist on volume but is specified
 su - ${ERRUSER} -c "${ERRBIN} $*"
