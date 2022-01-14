@@ -27,11 +27,12 @@ Docker: `rroemhild/errbot`
 ```
 docker run -d \
     --name err \
-    -e BOT_USERNAME=err@xmmp.local \
-    -e BOT_PASSWORD=errbotpwd \
-    -e BOT_ADMINS=admin@xmpp.local \
-    -e CHATROOM_PRESENCE=err@conference.xmpp.local \
-    -e "TZ=Europe/Berlin" \
+    -e BOT_IDENTITY_TOKEN=xoxb-111111111111-1111111111111-11X1XX1X1XXXXXXXXXXXXXX1 \
+    -e BOT_SIGNING_SECRET=11X1XX1X11111XXX1X111111X1XX11XX \
+    -e BOT_APP_TOKEN=xapp-1-X11XXX1X1XX-1111111111111-1XX1111XXX1111X11XXXX111XX1X1X1111X11XX1XX1XXX111XXX1111XXX11111 \
+    -e BOT_ADMINS=U11X111XXXX \
+    -e BOT_ADMINS_NOTIFICATIONS=@U11X111XXXX \
+    -e BOT_ALT_PREFIXES=errbot \
     rroemhild/errbot
 ```
 
