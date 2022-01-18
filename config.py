@@ -74,7 +74,7 @@ BOT_EXTRA_PLUGIN_DIR = os.environ.get('BOT_EXTRA_PLUGIN_DIR', '/srv/plugins')
 
 # If you use an external backend as a plugin,
 # this is where you tell err where to find it.
-BOT_EXTRA_BACKEND_DIR = '/srv/errbackends'
+BOT_EXTRA_BACKEND_DIR = os.environ.get('BOT_EXTRA_BACKEND_DIR', '/app/errbackends')
 
 # If you want only a subset of the core plugins that are bundled with errbot, you can specify them here.
 # CORE_PLUGINS = None # This is default, all core plugins.

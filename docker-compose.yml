@@ -10,8 +10,12 @@ errbot:
     - BOT_ADMINS_NOTIFICATIONS=@U11X111XXXX
     - BOT_ALT_PREFIXES=errbot
     - BOT_LOG_LEVEL=WARNING
-    - CHATROOM_PRESENCE=""
-  dns: 172.17.0.1
+    - BOT_EXTRA_BACKEND_DIR=/app/errbackends
+ dns: 172.17.0.1
+ volumes:
+   - srv:/srv/errbackends:rw
+ restart: always
+
 
 dnsdock:
   image: tonistiigi/dnsdock
@@ -19,3 +23,4 @@ dnsdock:
     - /var/run/docker.sock:/var/run/docker.sock
   ports:
     - 172.17.0.1:53:53/udp
+  restart: always

@@ -56,10 +56,11 @@ RUN . /app/venv/bin/activate; pip install --no-cache-dir -U -r /app/requirements
 COPY config.py /app/config.py
 COPY run.sh /app/venv/bin/run.sh
 
+RUN mkdir /app/errbackends 
+COPY err-backend-slackv3/ /app/errbackends/err-backend-slackv3/
 RUN mkdir /srv/data /srv/plugins /srv/errbackends \
     && chown -R $ERR_USER: /srv /app
 
-COPY err-backend-slackv3/ /srv/errbackends/err-backend-slackv3/
 
 EXPOSE 3141 3142
 VOLUME ["/srv"]
