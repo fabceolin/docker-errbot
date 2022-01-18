@@ -1,7 +1,5 @@
 errbot:
   build: .
-  links:
-    - ejabberd
   environment:
     - WAIT=10
     - BACKEND=SlackV3
