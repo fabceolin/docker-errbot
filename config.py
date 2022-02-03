@@ -47,6 +47,7 @@ BOT_IDENTITY_TOKEN = os.environ.get('BOT_IDENTITY_TOKEN', '')
 BOT_SIGNING_SECRET = os.environ.get('BOT_SIGNING_SECRET', '')
 BOT_APP_TOKEN = os.environ.get('BOT_APP_TOKEN','')
 
+BOT_MYSQL_CONNECTION = os.environ.get('BOT_MYSQL_CONNECTION','')
 
 BOT_IDENTITY = {
         'token': BOT_IDENTITY_TOKEN,
@@ -63,18 +64,27 @@ BACKEND = os.environ.get('BACKEND', 'SlackV3')
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
-BOT_DATA_DIR = '/srv/data'
+BOT_DATA_DIR = '/srv/'
 
 # Set this to a directory on your system where you want to load extra
 # plugins from, which is useful mostly if you want to develop a plugin
 # locally before publishing it. Note that you can specify only a single
 # directory, however you are free to create subdirectories with multiple
 # plugins inside this directory.
-BOT_EXTRA_PLUGIN_DIR = os.environ.get('BOT_EXTRA_PLUGIN_DIR', '/srv/plugins')
+BOT_EXTRA_PLUGIN_DIR = os.environ.get('BOT_EXTRA_PLUGIN_DIR', '/app/errplugins')
 
 # If you use an external backend as a plugin,
 # this is where you tell err where to find it.
 BOT_EXTRA_BACKEND_DIR = os.environ.get('BOT_EXTRA_BACKEND_DIR', '/app/errbackends')
+
+BOT_EXTRA_STORAGE_PLUGINS_DIR = os.environ.get('BOT_EXTRA_STORAGE_PLUGINS_DIR', '/app/err-storage')
+
+STORAGE = 'SQL'
+STORAGE_CONFIG = {
+   'data_url': BOT_MYSQL_CONNECTION
+   }
+
+# ' postgresql://scott:tiger@localhost/test',
 
 # If you want only a subset of the core plugins that are bundled with errbot, you can specify them here.
 # CORE_PLUGINS = None # This is default, all core plugins.

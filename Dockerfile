@@ -57,7 +57,12 @@ COPY config.py /app/config.py
 COPY run.sh /app/venv/bin/run.sh
 
 RUN mkdir /app/errbackends 
+RUN mkdir /app/err-storage 
+RUN mkdir /app/errplugins
+
 COPY err-backend-slackv3/ /app/errbackends/err-backend-slackv3/
+COPY err-storage-sql/ /app/err-storage/err-storage-sql/
+COPY errbot-webhook-send/ /app/errplugins/errbot-webhook-send/
 RUN mkdir /srv/data /srv/plugins /srv/errbackends \
     && chown -R $ERR_USER: /srv /app
 
